@@ -1,6 +1,6 @@
 import random
 from kivy.app import App
-from kivy.lang import Builder
+# from kivy.lang import Builder
 from kivy.properties import ObjectProperty, StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 
@@ -96,7 +96,7 @@ class Mymanager(ScreenManager):
 
         return
 
-Builder.load_file('Nationspicker.kv')
+# Builder.load_file('nationspicker.kv')
 
 class Nationspicker(App):
     def build(self):
