@@ -1,0 +1,203 @@
+#: import sm kivy.uix.screenmanager
+<TeamButt@ToggleButton>:
+    size_hint: .3, .3
+    pos_hint: {"x":0.35, "y":0.3}
+    background_normal: 'gron.png'
+    background_down: 'rod.png'
+    background_color: 1, 1, 1, 1
+
+Mymanager:
+    transition: sm.NoTransition()
+    Mymainpage:
+        id: main
+    Myresults:
+        id: result
+
+
+<Mymainpage>:
+    name:"mainp"
+
+    playerslider: playerslider
+    china: china
+    egypt: egypt
+    greece: greece
+    persia: persia
+    rome: rome
+    america: america
+    arabs: arabs
+    ethiopia: ethiopia
+    india: india
+    japan: japan
+    korea: korea
+    mali: mali
+    mongolia: mongolia
+    poland: poland
+    portugal: portugal
+    venice: venice
+    vikings: vikings
+    britain: britain
+    carthage: carthage
+    france: france
+    holy: holy
+    hungary: hungary
+    inca: inca
+    khmer: khmer
+    netherlands: netherlands
+    ottoman: ottoman
+    russia: russia
+    spain: spain
+
+
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            size_hint: 1, .15
+            font_size: "40sp"
+            text: "Nationspicker"
+        BoxLayout:
+            spacing: '8sp'
+            orientation: 'horizontal'
+            size_hint: 1, .15
+            Label:
+                size_hint: 0.2, 1
+                text_size: self.size
+                halign: 'right'
+                valign: 'middle'
+                text: 'Players'
+            Slider:
+                id: playerslider
+                cursor_width: 26
+                min: 3
+                max: 6
+                step: 1
+            Label:
+                id: han
+                size_hint: 0.2, 1
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                text: str(root.playerslider.value)
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                size_hint: 1, .15
+                font_size: '35sp'
+                text: 'Teams'
+            GridLayout:
+                cols: 2
+                rows: 14
+                TeamButt:
+                    text: 'China'
+                    id: china
+                TeamButt:
+                    text: 'Egypt'
+                    id: egypt
+                TeamButt:
+                    text: 'Greece'
+                    id: greece
+                TeamButt:
+                    text: 'Persia'
+                    id: persia
+                TeamButt:
+                    text: 'Rome'
+                    id: rome
+                TeamButt:
+                    text: 'America'
+                    id: america
+                TeamButt:
+                    text: 'Arabs'
+                    id: arabs
+                TeamButt:
+                    text: 'Ethiopia'
+                    id: ethiopia
+                TeamButt:
+                    text: 'India'
+                    id: india
+                TeamButt:
+                    text: 'Japan'
+                    id: japan
+                TeamButt:
+                    text: 'Korea'
+                    id: korea
+                TeamButt:
+                    text: 'Mali'
+                    id: mali
+                TeamButt:
+                    text: 'Mongolia'
+                    id: mongolia
+                TeamButt:
+                    text: 'Poland'
+                    id: poland
+                TeamButt:
+                    text: 'Portugal'
+                    id: portugal
+                TeamButt:
+                    text: 'Venice'
+                    id: venice
+                TeamButt:
+                    text: 'Vikings'
+                    id: vikings
+                TeamButt:
+                    text: 'Britain'
+                    id: britain
+                TeamButt:
+                    text: 'Carthage'
+                    id: carthage
+                TeamButt:
+                    text: 'France'
+                    id: france
+                TeamButt:
+                    text: 'Holy roman empire'
+                    id: holy
+                TeamButt:
+                    text: 'Hungary'
+                    id: hungary
+                TeamButt:
+                    text: 'Inca empire'
+                    id: inca
+                TeamButt:
+                    text: 'Khmer empire'
+                    id: khmer
+                TeamButt:
+                    text: 'Netherlands'
+                    id: netherlands
+                TeamButt:
+                    text: 'Ottoman empire'
+                    id: ottoman
+                TeamButt:
+                    text: 'Russia'
+                    id: russia
+                TeamButt:
+                    text: 'Spain'
+                    id: spain
+            Label:
+                size_hint:.5, .1
+        Button:
+            text: "Pick some teams!"
+            background_color: 0, .5, 1, 1
+            size_hint:.5, .15
+            pos_hint: {'center_x': 0.5}
+            on_release:
+                root.manager.randomizeteams()
+                app.root.current = "results"
+<Myresults>:
+    name:"results"
+    printresult: printresult
+
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: printresult
+            font_size: "60sp"
+            text: root.manager.pickedteamsstring
+
+        Button:
+            text: "back to picker"
+            background_color: 0, .5, 1, 1
+            size_hint:.5, .15
+            pos_hint: {'center_x': 0.5}
+            on_release:
+                app.root.current = "mainp"
+
+
+
