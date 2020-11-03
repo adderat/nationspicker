@@ -1,14 +1,8 @@
 import random
 from kivy.app import App
-# from kivy.config import Config
+from kivy.lang import Builder
 from kivy.properties import ObjectProperty, StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
-
-# Config.set('graphics', 'width', '540')
-# Config.set('graphics', 'height', '960')
-# Config.set('graphics', 'position', 'custom')
-# Config.set('graphics', 'left', 100)
-# Config.set('graphics', 'top', 100)
 
 
 class Mymainpage(Screen):
@@ -99,10 +93,10 @@ class Mymanager(ScreenManager):
         self.pickedteamsstring = ""
         for item in pickedteams:
             self.pickedteamsstring = self.pickedteamsstring + "\n" + item
-        print(self.pickedteamsstring)
 
         return
 
+Builder.load_file('Nationspicker.kv')
 
 class Nationspicker(App):
     def build(self):
